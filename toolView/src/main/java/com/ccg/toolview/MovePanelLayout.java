@@ -86,8 +86,15 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
 
     public MovePanelLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
 
-//        init();
+    public void setFloatView(ToolsLayout view){
+        if (moveView != null){
+            removeAllViews();
+        }
+        moveView = view;
+        moveView.setOnClickToolResultListener(this);
+        addView(moveView);
     }
 
     public void setOnToolItemClickListener(OnToolItemClickListener onToolItemClickListener) {
@@ -97,12 +104,6 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
     private void init() {
         isHideLayout = false;
         currentStatus = TOOL_HIDE;
-        if (moveView == null){
-            View contentView = LayoutInflater.from(getContext()).inflate(R.layout.float_view, null);
-            moveView = contentView.findViewById(R.id.tool_layout);
-            addView(moveView);
-            moveView.setOnClickToolResultListener(this);
-        }
         moveX = 0;
         moveY = 51;
     }
@@ -119,8 +120,7 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
 
-        if ((currentStatus == TOOL_HIDE || currentStatus == TOOL_SHOW)){
-//            float x = moveView.getX();
+        if (moveView != null && (currentStatus == TOOL_HIDE || currentStatus == TOOL_SHOW)){
             int screenWidth = getMeasuredWidth();
             Log.d(TAG, "屏幕宽度: "+screenWidth+",tools x:"+moveX);
             int measuredWidth = moveView.getMeasuredWidth();
@@ -139,7 +139,7 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
                 }
             }
 
-        }else if ( currentStatus == TOOL_REMOVE){
+        }else if (moveView != null &&  currentStatus == TOOL_REMOVE){
             int measuredWidth = moveView.getMeasuredWidth();
             Log.e(TAG, "run: "+(-measuredWidth/4) );
             int screenWidth = getMeasuredWidth();
@@ -254,7 +254,7 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
     @Override
     public void onClickToolResult(View view) {
         int id = view.getId();
-        if (id == R.id.tool_circle_view) {
+        if (moveView != null && id == moveView.getToolCircleViewId()) {
             Log.e(TAG, "onClickToolResult: circle view..."+currentStatus);
             reset();
             if (isHideLayout){
@@ -262,14 +262,17 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
                 currentStatus = TOOL_HIDE;
                 handler.postDelayed(remove, 5 * 1000);
             }else{
-                if (moveView.isHideTool()){
-                    currentStatus = TOOL_SHOW;
-                    handler.postDelayed(hide, 5 * 1000);
-                }else{
-                    currentStatus = TOOL_HIDE;
-                    handler.postDelayed(remove, 5 * 1000);
+                if (moveView != null){
+                    if (moveView.isHideTool()){
+                        currentStatus = TOOL_SHOW;
+                        handler.postDelayed(hide, 5 * 1000);
+                    }else{
+                        currentStatus = TOOL_HIDE;
+                        handler.postDelayed(remove, 5 * 1000);
+                    }
+                    moveView.setHideTool(!moveView.isHideTool());
                 }
-                moveView.setHideTool(!moveView.isHideTool());
+
             }
             requestLayout();
         }else{
@@ -285,10 +288,12 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
     }
 
     private void postHideTool(){
-        if (moveView.isHideTool()){
-            handler.postDelayed(remove, 5 * 1000);
-        }else{
-            handler.postDelayed(hide, 5 * 1000);
+        if (moveView != null){
+            if (moveView.isHideTool()){
+                handler.postDelayed(remove, 5 * 1000);
+            }else{
+                handler.postDelayed(hide, 5 * 1000);
+            }
         }
     }
 

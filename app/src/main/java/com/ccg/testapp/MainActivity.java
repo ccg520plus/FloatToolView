@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import com.ccg.toolview.MovePanelLayout;
+import com.ccg.toolview.ToolsLayout;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity  {
     private void showFloat(){
 
         MovePanelLayout movePanelLayout = findViewById(R.id.movelayout);
+        View view = LayoutInflater.from(this).inflate(R.layout.float_view,null,false);
+        ToolsLayout toolsLayout = view.findViewById(R.id.tool_layout);
+        movePanelLayout.setFloatView(toolsLayout);
         movePanelLayout.setOnToolItemClickListener(new MovePanelLayout.OnToolItemClickListener() {
             @Override
             public void onToolItemClick(View view) {
@@ -76,6 +81,8 @@ public class MainActivity extends AppCompatActivity  {
                     Toast.makeText(MainActivity.this,"隐藏",Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.tool_item_menu) {
                     Toast.makeText(MainActivity.this,"菜单",Toast.LENGTH_SHORT).show();
+                }else if (id == R.id.tool_item_exit){
+                    Toast.makeText(MainActivity.this,"退出",Toast.LENGTH_SHORT).show();
                 }
             }
         });

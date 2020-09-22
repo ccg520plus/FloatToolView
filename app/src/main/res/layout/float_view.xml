@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ccg.toolview.ToolsLayout android:id="@+id/tool_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ccg.toolview.ToolItem
+        android:id="@+id/tool_item_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemImageType="Exit"
+        app:itemImageSize="16dp"
+        app:itemImageColor="@color/blue"
+        app:itemText="退出"
+        app:itemTextColor="@color/colorAccent"
+        app:itemTextSize="14sp"
+        app:itemBackground="@color/white"/>
+
+    <com.ccg.toolview.ToolItem
+        android:id="@+id/tool_item_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemImageType="Return"
+        app:itemImageSize="16dp"
+        app:itemImageColor="@color/blue"
+        app:itemText="返回"
+        app:itemTextColor="@color/colorAccent"
+        app:itemTextSize="14sp"
+        app:itemBackground="@color/white"/>
+
+    <com.ccg.toolview.ToolItem
+        android:id="@+id/tool_item_hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemImageType="Home"
+        app:itemImageSize="16dp"
+        app:itemImageColor="@color/blue"
+        app:itemText="隐藏"
+        app:itemTextColor="@color/colorAccent"
+        app:itemTextSize="14sp"
+        app:itemBackground="@color/white"/>
+
+
+    <com.ccg.toolview.ToolItem
+        android:id="@+id/tool_item_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemImageType="Menu"
+        app:itemImageSize="16dp"
+        app:itemImageColor="@color/blue"
+        app:itemText="菜单"
+        app:itemTextColor="@color/colorAccent"
+        app:itemTextSize="14sp"
+        app:itemBackground="@color/white"/>
+
+    <com.ccg.toolview.ToolCircleView
+        android:id="@+id/tool_circle_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:toolCircleImage="@drawable/ic_tools"
+        app:toolCircleImageSize="45dp"
+        app:toolCircleStrokeColor="@color/blue"
+        app:toolCircleStrokeWidth="2dp"/>
+
+
+</com.ccg.toolview.ToolsLayout>

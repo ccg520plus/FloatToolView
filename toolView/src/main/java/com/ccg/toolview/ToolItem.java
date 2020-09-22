@@ -33,6 +33,7 @@ public class ToolItem extends View {
     public static final int RETURN = 1;
     public static final int HOME = 2;
     public static final int MENU = 3;
+    public static final int EXIT = 4;
 
     private int bitmapColor;
 
@@ -225,6 +226,14 @@ public class ToolItem extends View {
             canvas.drawCircle(bitmapSize/2.0f,measureHeight/2.0f,bitmapSize/2.0f-5,paint);
         }else if (bitmapType == MENU){
             canvas.drawRoundRect(new RectF(5,topPadding+5,bitmapSize-5,bitmapSize+topPadding-5),2,2,paint);
+        }else if (bitmapType == EXIT){
+
+            Path path = new Path();
+            path.moveTo(5,topPadding+5);
+            path.lineTo(bitmapSize-5,bitmapSize + topPadding - 5);
+            path.moveTo(bitmapSize-5,topPadding+5);
+            path.lineTo(5,bitmapSize+topPadding - 5);
+            canvas.drawPath(path,paint);
         }
 
     }

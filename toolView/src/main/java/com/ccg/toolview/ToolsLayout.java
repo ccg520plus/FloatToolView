@@ -28,6 +28,8 @@ public class ToolsLayout extends ViewGroup implements View.OnClickListener {
     private int toolPadding = 10;
     private boolean isHideTool = true;//是否隐藏工具栏
 
+    private ToolCircleView toolCircleView;
+
     private OnClickToolResultListener onClickToolResultListener;
 
     public ToolsLayout(@NonNull Context context) {
@@ -57,12 +59,11 @@ public class ToolsLayout extends ViewGroup implements View.OnClickListener {
         return isHideTool;
     }
 
-    public int getMeasureWidth(){
-        return measureWidth;
-    }
-
-    public int getMeasureHeight(){
-        return measureHeight;
+    int getToolCircleViewId(){
+        if (toolCircleView != null){
+            return toolCircleView.getId();
+        }
+        return 0;
     }
 
     @Override
@@ -80,6 +81,7 @@ public class ToolsLayout extends ViewGroup implements View.OnClickListener {
                 View child = getChildAt(i);
                 child.setOnClickListener(this);
                 if (child instanceof ToolCircleView){
+                    toolCircleView = (ToolCircleView) child;
                     measureWidth += ((ToolCircleView) child).getMeasuredWidth();
                     toolWidth += ((ToolCircleView) child).getMeasuredWidth()/2;
                     measureHeight = (int) Math.max(((ToolCircleView) child).getMeasuredHeight(),measureHeight);

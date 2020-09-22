@@ -13,6 +13,7 @@
             <enum name="Return" value="1"/>
             <enum name="Home" value="2"/>
             <enum name="Menu" value="3"/>
+            <enum name="Exit" value="4"/>
         </attr>
         <attr name="itemImageSize" format="dimension|reference"/>
         <attr name="itemImageColor" format="reference"/>
