@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ToolCircleView">
+        <attr name="toolCircleImage" format="reference"/>
+        <attr name="toolCircleImageSize" format="dimension|reference"/>
+        <attr name="toolCircleStrokeWidth" format="reference|dimension"/>
+        <attr name="toolCircleStrokeColor" format="reference|color"/>
+    </declare-styleable>
+    
+    <declare-styleable name="ToolItem">
+        <attr name="itemImageType" format="integer">
+            <enum name="Return" value="1"/>
+            <enum name="Home" value="2"/>
+            <enum name="Menu" value="3"/>
+        </attr>
+        <attr name="itemImageSize" format="dimension|reference"/>
+        <attr name="itemImageColor" format="reference"/>
+        <attr name="itemText" format="string"/>
+        <attr name="itemTextSize" format="dimension|reference"/>
+        <attr name="itemTextColor" format="reference"/>
+        <attr name="itemSelectedColor" format="reference|color"/>
+        <attr name="itemUnselectedColor" format="reference|color"/>
+    </declare-styleable>
+
+</resources>
