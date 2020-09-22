@@ -46,8 +46,7 @@ public class ToolItem extends View {
 
     private int textColor;
 
-    private int selectedColor;
-    private int unselectedColor;
+    private int itemBackground;
 
     private int textMargin = 5;
     private int defaultPadding = 10;
@@ -76,8 +75,8 @@ public class ToolItem extends View {
         text = array.getString(R.styleable.ToolItem_itemText);
         textSize = array.getDimension(R.styleable.ToolItem_itemTextSize,12);
         textColor = array.getInt(R.styleable.ToolItem_itemTextColor,Color.BLACK);
-        selectedColor = array.getColor(R.styleable.ToolItem_itemSelectedColor,Color.GRAY);
-        unselectedColor = array.getColor(R.styleable.ToolItem_itemUnselectedColor,Color.WHITE);
+        itemBackground = array.getColor(R.styleable.ToolItem_itemBackground,Color.WHITE);
+//        unselectedColor = array.getColor(R.styleable.ToolItem_itemUnselectedColor,Color.WHITE);
         array.recycle();
 
         Log.e(TAG, "ToolItem: item->text size:"+textSize+",bitmapSize:"+ bitmapSize);
@@ -190,11 +189,7 @@ public class ToolItem extends View {
         //先画背景色
         //如果当前view处于按下状态，那么需要绘制按下状态的颜色背景
         RectF rectF = new RectF(0,0,measureWidth,measureHeight);
-        if (isPressed){
-            paint.setColor(selectedColor);
-        }else{
-            paint.setColor(unselectedColor);
-        }
+        paint.setColor(itemBackground);
         canvas.drawRect(rectF,paint);
         //先画图标
         drawBitmap(canvas);
@@ -236,21 +231,10 @@ public class ToolItem extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int x = (int) event.getRawX();
-        int y = (int) event.getRawY();
-        Log.e(TAG, "onTouchEvent: "+event.getAction()+","+x+"x"+y );
-        if (event.getAction() == MotionEvent.ACTION_DOWN){
-            isPressed = true;
-            invalidate();
-            Log.e(TAG, "onTouchEvent: down" );
-        }
-        else if (event.getAction() == MotionEvent.ACTION_UP){
+       if (event.getAction() == MotionEvent.ACTION_UP){
             Log.e(TAG, "onTouchEvent: up" );
             performClick();
             return true;
-        }else{
-            isPressed = false;
-            invalidate();
         }
         return super.onTouchEvent(event);
     }

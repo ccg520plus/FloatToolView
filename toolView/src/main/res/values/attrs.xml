@@ -19,8 +19,8 @@
         <attr name="itemText" format="string"/>
         <attr name="itemTextSize" format="dimension|reference"/>
         <attr name="itemTextColor" format="reference"/>
-        <attr name="itemSelectedColor" format="reference|color"/>
-        <attr name="itemUnselectedColor" format="reference|color"/>
+        <attr name="itemBackground" format="reference|color"/>
+<!--        <attr name="itemUnselectedColor" format="reference|color"/>-->
     </declare-styleable>
 
 </resources>

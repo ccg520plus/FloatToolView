@@ -235,7 +235,7 @@ public class MovePanelLayout extends ViewGroup implements ToolsLayout.OnClickToo
             Log.e(TAG, "onTouchEvent: up" );
             postHideTool();
             if (currentStatus == TOOL_MOVE){
-                if (moveX < getMeasuredWidth()/2.0f){
+                if (x < getMeasuredWidth()/2.0f){
                     Log.d(TAG, "onTouchEvent: 左侧");
                     currentALign = TOOL_LEFT;
                 }else{

@@ -16,8 +16,7 @@
         app:itemText="返回"
         app:itemTextColor="@color/colorAccent"
         app:itemTextSize="14sp"
-        app:itemSelectedColor="@color/gray"
-        app:itemUnselectedColor="@color/white"/>
+        app:itemBackground="@color/white"/>
 
     <com.ccg.toolview.ToolItem
         android:id="@+id/tool_item_hide"
@@ -29,8 +28,7 @@
         app:itemText="隐藏"
         app:itemTextColor="@color/colorAccent"
         app:itemTextSize="14sp"
-        app:itemSelectedColor="@color/gray"
-        app:itemUnselectedColor="@color/white"/>
+        app:itemBackground="@color/white"/>
 
 
     <com.ccg.toolview.ToolItem
@@ -43,8 +41,7 @@
         app:itemText="菜单"
         app:itemTextColor="@color/colorAccent"
         app:itemTextSize="14sp"
-        app:itemSelectedColor="@color/gray"
-        app:itemUnselectedColor="@color/white"/>
+        app:itemBackground="@color/white"/>
 
     <com.ccg.toolview.ToolCircleView
         android:id="@+id/tool_circle_view"
